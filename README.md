@@ -1,6 +1,6 @@
-# Combination-of-1-to-9-in-some-order-to-evaluate-100-or-any-number
+# Combination-of-1-to-9-in-order-with-add-subtract-or-concatinate-to-evaluate-100-or-any-number
 
-A simple JS program to figure out the possible combinations of 1 to 9 and +, - or concatination to get the evaluated result of 100 or another number provided by the user.
+A simple JS program to figure out the possible combinations of 1 to 9 in order and +, - or concatination to get the evaluated result of 100 or another number provided by the user.
 For Eg: '1+2+3-4+5+6+78+9' = 100
 I got this problem in a test and found it interesting.
 
