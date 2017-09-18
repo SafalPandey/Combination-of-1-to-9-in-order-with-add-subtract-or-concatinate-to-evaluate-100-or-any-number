@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Get Combination</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="col-xs-8" align='center' style="font-size:1.5em">
+	<p style='color:green;font-size:1.75em '>A simple JS program to figure out the possible combinations of 1 to 9 and +, - or concatination to get the evaluated result of number provided by the user.</p>
+	Results:	<div  id="combinations" style="background-color:#ccc"></div>
+	</div>
+
+      <div class="col-xs-3 container" align='center' style="top:0%;bottom:5%; position:fixed; right:0; background:#d2d2d2;">
+
+
+
+        <!-- <form align='center'> -->
+
+
+          <div >
+            <label style='padding-top:15%'>Evalute to:</label>
+
+            <input id='eval_to' type='' placeholder='Enter Any Number Here' class='form-control'>
+            <br/>
+
+            <button class="btn btn-success" type="submit" onclick="eval()" style="width:80%;overflow:hidden">Evaluate</button><br />
+          </div>
+        <!-- </form> -->
+
+
+      </div>
+      <script type="text/javascript">
+	  function addbits(s) {
+		return (s.replace(/\s/g, '').match(/[+\-]?([0-9\.]+)/g) || [])
+        .reduce(function(sum, value) {
+            return parseFloat(sum) + parseFloat(value);
+        });
+}
+      function eval(){
+		
+        var n = document.getElementById('eval_to').value;
+		if(n == '') n = 0;
+        var op = document.getElementById('combinations');
+		op.innerHTML ='';
+        var operator = ['+','-','']
+		
+        var satisfied = []
+        // var str = ''
+        operator.forEach(function(o){
+          
+            var str = '1'+o;
+          operator.forEach(function(o){
+            
+            str += '2'+o;
+
+            operator.forEach(function(o){
+              str += '3'+o;
+
+              operator.forEach(function(o){
+                str += '4'+o;
+
+                operator.forEach(function(o){
+                  str += '5'+o;
+
+                  operator.forEach(function(o){
+                    str += '6'+o;
+
+                    operator.forEach(function(o){
+                      str += '7'+o;
+
+                      operator.forEach(function(o){
+                        str += '8'+o+'9';
+						                        
+                        if(addbits(str) == n){
+						  op.innerHTML += str+' = '+n +'<br/>';
+                          satisfied.push(str);
+                        }
+
+                        str = str.split('8')[0];
+                      })
+
+                      str = str.split('7')[0];
+
+                    })
+                    str = str.split('6')[0];
+
+                  })
+                  str = str.split('5')[0];
+
+                })
+                str = str.split('4')[0];
+
+              })
+              str = str.split('3')[0];
+
+            })
+            str = str.split('2')[0];
+
+          })
+        str = '';
+        })
+
+
+        console.log(satisfied);
+
+
+      };
+      </script>
+    </body>
+</html>
